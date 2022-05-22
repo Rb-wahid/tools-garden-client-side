@@ -3,6 +3,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import AuthError from "../components/AuthError";
+import SocialSignin from "./SocialSignin";
 
 const Signin = () => {
   const {
@@ -82,11 +83,12 @@ const Signin = () => {
             </div>
             <div class="form-control mt-6">
               <button type="submit" class="btn btn-primary">
-                Signin
+                Sign in
               </button>
             </div>
           </form>
         </div>
+        <SocialSignin />
       </div>
     </section>
   );
