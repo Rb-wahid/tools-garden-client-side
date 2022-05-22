@@ -11,6 +11,27 @@ const SocialSignin = ({ from }) => {
   const navigate = useNavigate();
   const [fromC, setFromC] = useState("/");
 
+  useEffect(() => {
+    const fetch = async (email) => {
+      let {
+        data: { accessToken },
+      } = await axios.post("http://localhost:5000/token", {
+        email,
+      });
+      if (accessToken) {
+        localStorage.setItem("accessToken", accessToken);
+        navigate(fromC, { replace: true });
+      }
+    };
+    if (user) {
+      const { email } = user.user;
+      fetch(email);
+    }
+    if (from) {
+      setFromC(from);
+    }
+  }, [navigate, from, fromC, user]);
+
   const handleSignin = async () => {
     await signInWithGoogle();
   };

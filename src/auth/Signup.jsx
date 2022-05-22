@@ -1,4 +1,5 @@
 /* eslint-disable no-useless-escape */
+import axios from "axios";
 import React, { useEffect } from "react";
 import {
   useCreateUserWithEmailAndPassword,
@@ -22,10 +23,22 @@ const Signup = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    const fetch = async (email) => {
+      let {
+        data: { accessToken },
+      } = await axios.post("http://localhost:5000/token", {
+        email,
+      });
+      if (accessToken) {
+        localStorage.setItem("accessToken", accessToken);
+        navigate("/");
+      }
+    };
     if (user) {
-      navigate("/");
+      const { email } = user.user;
+      fetch(email);
     }
-  }, [user, navigate]);
+  }, [navigate, user]);
 
   const onSubmit = async ({ name, email, password }) => {
     await createUserWithEmailAndPassword(email, password);

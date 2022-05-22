@@ -1,4 +1,5 @@
 /* eslint-disable no-useless-escape */
+import axios from "axios";
 import React, { useEffect } from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
@@ -27,8 +28,22 @@ const Signin = () => {
   };
 
   useEffect(() => {
-    if (user) navigate(from, { replace: true });
-  }, [from, navigate, user]);
+    const fetch = async (email) => {
+      let {
+        data: { accessToken },
+      } = await axios.post("http://localhost:5000/token", {
+        email,
+      });
+      if (accessToken) {
+        localStorage.setItem("accessToken", accessToken);
+        navigate(from, { replace: true });
+      }
+    };
+    if (user) {
+      const { email } = user.user;
+      fetch(email);
+    }
+  }, [navigate, from, user]);
 
   if (loading) return <Spinner />;
 
