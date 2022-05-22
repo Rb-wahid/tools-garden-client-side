@@ -103,7 +103,7 @@ const Signup = () => {
             </div>
             <div class="form-control mt-6">
               <button type="submit" class="btn btn-primary">
-                Signup
+                Sign up
               </button>
             </div>
           </form>
