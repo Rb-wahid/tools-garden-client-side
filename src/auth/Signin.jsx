@@ -1,18 +1,36 @@
 /* eslint-disable no-useless-escape */
-import React from "react";
+import React, { useEffect } from "react";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import AuthError from "../components/AuthError";
+import Spinner from "../components/Spinner";
+import auth from "../Firebase.init";
 import SocialSignin from "./SocialSignin";
 
 const Signin = () => {
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  const onSubmit = (data) => console.log(data);
+  const from = location.state?.from?.pathname || "/";
+
+  const onSubmit = async ({ email, password }) => {
+    await signInWithEmailAndPassword(email, password);
+  };
+
+  useEffect(() => {
+    if (user) navigate(from, { replace: true });
+  }, [from, navigate, user]);
+
+  if (loading) return <Spinner />;
 
   return (
     <section className="hero h-screen">
@@ -81,6 +99,7 @@ const Signin = () => {
                 </Link>
               </label>
             </div>
+            {error && <AuthError>{error.message}</AuthError>}
             <div class="form-control mt-6">
               <button type="submit" class="btn btn-primary">
                 Sign in
@@ -88,7 +107,7 @@ const Signin = () => {
             </div>
           </form>
         </div>
-        <SocialSignin />
+        <SocialSignin from={from} />
       </div>
     </section>
   );

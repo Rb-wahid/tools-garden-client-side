@@ -1,18 +1,44 @@
 /* eslint-disable no-useless-escape */
-import React from "react";
+import React, { useEffect } from "react";
+import {
+  useCreateUserWithEmailAndPassword,
+  useUpdateProfile,
+} from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AuthError from "../components/AuthError";
+import Spinner from "../components/Spinner";
+import auth from "../Firebase.init";
 
 const Signup = () => {
+  const [createUserWithEmailAndPassword, user, loading, errorCreateUser] =
+    useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+  const [updateProfile, updating, errorUpdate] = useUpdateProfile(auth);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const navigate = useNavigate();
 
-  const onSubmit = (data) => console.log(data);
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [user, navigate]);
 
+  const onSubmit = async ({ name, email, password }) => {
+    await createUserWithEmailAndPassword(email, password);
+    // ! TOD
+    // add image photoURL: string
+    await updateProfile({ displayName: name });
+  };
+
+  const error = errorCreateUser || errorUpdate;
+
+  if (loading || updating) {
+    return <Spinner />;
+  }
   return (
     <section className="hero h-screen">
       <div class=" card flex-shrink-0 w-full max-w-sm  shadow-2xl bg-base-100">
@@ -101,6 +127,7 @@ const Signup = () => {
                 </Link>
               </label>
             </div>
+            {error && <AuthError>{error.message}</AuthError>}
             <div class="form-control mt-6">
               <button type="submit" class="btn btn-primary">
                 Sign up
