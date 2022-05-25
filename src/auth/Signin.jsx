@@ -28,20 +28,24 @@ const Signin = () => {
   };
 
   useEffect(() => {
-    const fetch = async (email) => {
-      let {
-        data: { accessToken },
-      } = await axios.post("http://localhost:5000/token", {
-        email,
-      });
+    const fetch = async (user) => {
+      const userInformation = {
+        name: user.displayName,
+        email: user.email,
+      };
+      let { data: accessToken } = await axios.post(
+        "http://localhost:5000/token",
+        {
+          user: userInformation,
+        }
+      );
       if (accessToken) {
         localStorage.setItem("accessToken", accessToken);
         navigate(from, { replace: true });
       }
     };
     if (user) {
-      const { email } = user.user;
-      fetch(email);
+      fetch(user.user);
     }
   }, [navigate, from, user]);
 

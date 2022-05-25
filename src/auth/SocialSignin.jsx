@@ -9,28 +9,33 @@ import axios from "axios";
 const SocialSignin = ({ from }) => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
   const navigate = useNavigate();
-  const [fromC, setFromC] = useState("/");
 
   useEffect(() => {
-    const fetch = async (email) => {
-      let {
-        data: { accessToken },
-      } = await axios.post("http://localhost:5000/token", {
-        email,
-      });
+    const fetch = async (user) => {
+      const userInformation = {
+        name: user.displayName,
+        email: user.email,
+      };
+      let { data: accessToken } = await axios.post(
+        "http://localhost:5000/token",
+        {
+          user: userInformation,
+        }
+      );
       if (accessToken) {
         localStorage.setItem("accessToken", accessToken);
-        navigate(fromC, { replace: true });
+        navigate(from, { replace: true });
       }
     };
     if (user) {
-      const { email } = user.user;
-      fetch(email);
+      fetch(user.user);
     }
-    if (from) {
-      setFromC(from);
-    }
-  }, [navigate, from, fromC, user]);
+    //if (from) {
+    console.log("from ", from);
+    // console.log("fromC", fromC);
+    //  setFromC(from);
+    // }
+  }, [navigate, from, user]);
 
   const handleSignin = async () => {
     await signInWithGoogle();

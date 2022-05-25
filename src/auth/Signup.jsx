@@ -1,6 +1,6 @@
 /* eslint-disable no-useless-escape */
 import axios from "axios";
-import React, { useEffect } from "react";
+import React from "react";
 import {
   useCreateUserWithEmailAndPassword,
   useUpdateProfile,
@@ -22,29 +22,25 @@ const Signup = () => {
   } = useForm();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetch = async (email) => {
-      let {
-        data: { accessToken },
-      } = await axios.post("http://localhost:5000/token", {
-        email,
-      });
-      if (accessToken) {
-        localStorage.setItem("accessToken", accessToken);
-        navigate("/");
-      }
-    };
-    if (user) {
-      const { email } = user.user;
-      fetch(email);
-    }
-  }, [navigate, user]);
-
   const onSubmit = async ({ name, email, password }) => {
     await createUserWithEmailAndPassword(email, password);
-    // ! TOD
+    // ! TODO
     // add image photoURL: string
     await updateProfile({ displayName: name });
+    const userInformation = {
+      name,
+      email,
+    };
+    let { data: accessToken } = await axios.post(
+      "http://localhost:5000/token",
+      {
+        user: userInformation,
+      }
+    );
+    if (accessToken) {
+      localStorage.setItem("accessToken", accessToken);
+      navigate("/");
+    }
   };
 
   const error = errorCreateUser || errorUpdate;
