@@ -1,0 +1,29 @@
+[
+  {
+    "_id": 1,
+    "name": "36V (18V X2) LXT® Brushless 21\" Self‑Propelled Commercial Lawn Mower Kit with 4 Batteries (5.0Ah)",
+    "image": "https://i.ibb.co/St1DpCh/Lawn-Mower.png",
+    "description": "Cuts up to 2/3 acre in 60 minutes or less with (4) 18V LXT® 5.0 Ah batteries. 4 bay battery system for 2 times more run time. Commercial-grade steel deck. Self-propelled with variable speed lever (1.5 MPH - 3 MPH). 4 ea. 18V LXT® 5.0Ah batteries and dual port rapid charger",
+    "minimumOrder": 1000,
+    "quantity": 10000,
+    "price": 999.00
+  },
+  {
+    "_id": 2,
+    "name": "18V LXT® Lithium‑Ion Brushless Cordless Blower Kit (4.0Ah)",
+    "image": "https://i.ibb.co/ngCTnYc/Cordless-Blower.png",
+    "description": "Makita-built BL™ Brushless Motor delivers up to 459 CFM and 116 MPH.  Cruise control lever with variable speed trigger for power and run time management. In-line fan design provides better tool balance and improved ergonomics. Rubberized soft grip provides increased comfort on the job.",
+    "minimumOrder": 1000,
+    "quantity": 10000,
+    "price": 199.0
+  },
+  {
+    "_id": 3,
+    "name": "36V (18V X2) LXT® Brushless 16\" Chain Saw Kit (4.0Ah)",
+    "image": "https://i.ibb.co/mbtfF7L/Chain-Saw.png",
+    "description": "Makita-built outer rotor brushless motor direct-drive system delivers power of a 32cc gas chain saw. \"Tool-less\" chain adjustment for convenient operation and maintenance. Variable speed trigger and high chain speed (0-3,940 FPM) for improved cutting performance.",
+    "minimumOrder": 1000,
+    "quantity": 10000,
+    "price": 339.0
+  }
+]

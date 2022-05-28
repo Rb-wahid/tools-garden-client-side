@@ -1,13 +1,26 @@
 import React from "react";
+import { signOut } from "firebase/auth";
 import { NavLink } from "react-router-dom";
+import useUser from "../hooks/useUser";
+import auth from "../Firebase.init";
 
 const Navbar = () => {
-  const user = true;
+  const [user] = useUser();
   const publicNav = (
     <>
       <li>
         <NavLink to="/" className="rounded-lg">
           Home
+        </NavLink>
+      </li>
+    </>
+  );
+
+  const endNav = (
+    <>
+      <li>
+        <NavLink to="/blogs" className="rounded-lg">
+          Blogs
         </NavLink>
       </li>
     </>
@@ -24,7 +37,7 @@ const Navbar = () => {
   );
 
   return (
-    <nav className="navbar bg-accent px-5 lg:px-20">
+    <nav className="navbar bg-base-100 px-5 lg:px-20 fixed  top-0 z-50">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex="0" className="btn btn-ghost lg:hidden">
@@ -49,20 +62,32 @@ const Navbar = () => {
           >
             {publicNav}
             {user && privateNav}
+            {endNav}
           </ul>
         </div>
-        <NavLink to="/" className="btn btn-ghost normal-case text-xl">
+        <NavLink
+          to="/"
+          className="btn btn-ghost text-2xl uppercase font-extrabold italic text-warning"
+        >
           Tools Garden
         </NavLink>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal p-0">
           {publicNav} {user && privateNav}
+          {endNav}
         </ul>
       </div>
       <div className="navbar-end">
         {user ? (
-          <NavLink to="/" className="btn">
+          <NavLink
+            onClick={async () => {
+              localStorage.removeItem("accessToken");
+              await signOut(auth);
+            }}
+            to="/"
+            className="btn"
+          >
             Sign Out
           </NavLink>
         ) : (

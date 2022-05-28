@@ -4,7 +4,7 @@ import ContactUs from "./ContactUs";
 import Products from "./Products";
 import Review from "./Review";
 import Stat from "./Stat";
-const Header = React.lazy(() => import("./Header"));
+import Header from "./Header";
 
 const Home = () => {
   return (
