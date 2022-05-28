@@ -10,4 +10,4 @@
 - In every successful sign in & sign up client side received jwt token & store it on local storage.
 - User can place order, cancel order before pay. And can payment using card. For every successful payment user received payment conformation email. User can add review.
 - Admin can make admin another user, cancel order, shipped order, add new product, update old product and delete product.
-- Display Location useing react-leaflet
+- Display Location using react-leaflet
