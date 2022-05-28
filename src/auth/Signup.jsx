@@ -3,11 +3,11 @@ import axios from "axios";
 import React from "react";
 import {
   useCreateUserWithEmailAndPassword,
-  useUpdateProfile,
+  useUpdateProfile
 } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import AuthError from "../components/AuthError";
+import DisplayError from "../components/DisplayError";
 import Spinner from "../components/Spinner";
 import auth from "../Firebase.init";
 
@@ -24,15 +24,13 @@ const Signup = () => {
 
   const onSubmit = async ({ name, email, password }) => {
     await createUserWithEmailAndPassword(email, password);
-    // ! TODO
-    // add image photoURL: string
     await updateProfile({ displayName: name });
     const userInformation = {
       name,
       email,
     };
     let { data: accessToken } = await axios.post(
-      "http://localhost:5000/token",
+      "https://infinite-escarpment-69850.herokuapp.com/token",
       {
         user: userInformation,
       }
@@ -76,10 +74,10 @@ const Signup = () => {
                 })}
               />
               {errors.name?.type === "required" && (
-                <AuthError>{errors.name.message}</AuthError>
+                <DisplayError>{errors.name.message}</DisplayError>
               )}
               {errors.name?.type === "maxLength" && (
-                <AuthError>{errors.name.message}</AuthError>
+                <DisplayError>{errors.name.message}</DisplayError>
               )}
             </div>
             <div class="form-control">
@@ -102,10 +100,10 @@ const Signup = () => {
                 })}
               />
               {errors.email?.type === "required" && (
-                <AuthError>{errors.email.message}</AuthError>
+                <DisplayError>{errors.email.message}</DisplayError>
               )}
               {errors.email?.type === "pattern" && (
-                <AuthError>{errors.email.message}</AuthError>
+                <DisplayError>{errors.email.message}</DisplayError>
               )}
             </div>
             <div class="form-control">
@@ -124,7 +122,7 @@ const Signup = () => {
                 })}
               />
               {errors.password?.type === "required" && (
-                <AuthError>{errors.password.message}</AuthError>
+                <DisplayError>{errors.password.message}</DisplayError>
               )}
               <label class="label mt-1 text-sm">
                 <span>Already have an account?</span>
@@ -136,7 +134,7 @@ const Signup = () => {
                 </Link>
               </label>
             </div>
-            {error && <AuthError>{error.message}</AuthError>}
+            {error && <DisplayError>{error.message}</DisplayError>}
             <div class="form-control mt-6">
               <button type="submit" class="btn btn-primary">
                 Sign up

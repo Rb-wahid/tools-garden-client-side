@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import google from "../assets/icon/google.svg";
-import auth from "../Firebase.init";
-import { useSignInWithGoogle } from "react-firebase-hooks/auth";
-import AuthError from "../components/AuthError";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import React, { useEffect } from "react";
+import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { useNavigate } from "react-router-dom";
+import google from "../assets/icon/google.svg";
+import DisplayError from "../components/DisplayError";
+import auth from "../Firebase.init";
 
 const SocialSignin = ({ from }) => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
@@ -17,7 +17,7 @@ const SocialSignin = ({ from }) => {
         email: user.email,
       };
       let { data: accessToken } = await axios.post(
-        "http://localhost:5000/token",
+        "https://infinite-escarpment-69850.herokuapp.com/token",
         {
           user: userInformation,
         }
@@ -30,11 +30,6 @@ const SocialSignin = ({ from }) => {
     if (user) {
       fetch(user.user);
     }
-    //if (from) {
-    console.log("from ", from);
-    // console.log("fromC", fromC);
-    //  setFromC(from);
-    // }
   }, [navigate, from, user]);
 
   const handleSignin = async () => {
@@ -44,7 +39,7 @@ const SocialSignin = ({ from }) => {
   return (
     <div className="card-body pt-0">
       <div class="divider my-0">OR</div>
-      {error && <AuthError>{error.message}</AuthError>}
+      {error && <DisplayError>{error.message}</DisplayError>}
       <div class="form-control mt-6">
         <button
           onClick={handleSignin}

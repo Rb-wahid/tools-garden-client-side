@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import AuthError from "../components/AuthError";
+import DisplayError from "../components/DisplayError";
 import Spinner from "../components/Spinner";
 import auth from "../Firebase.init";
 import SocialSignin from "./SocialSignin";
@@ -34,7 +34,7 @@ const Signin = () => {
         email: user.email,
       };
       let { data: accessToken } = await axios.post(
-        "http://localhost:5000/token",
+        "https://infinite-escarpment-69850.herokuapp.com/token",
         {
           user: userInformation,
         }
@@ -79,10 +79,10 @@ const Signin = () => {
                 })}
               />
               {errors.email?.type === "required" && (
-                <AuthError>{errors.email.message}</AuthError>
+                <DisplayError>{errors.email.message}</DisplayError>
               )}
               {errors.email?.type === "pattern" && (
-                <AuthError>{errors.email.message}</AuthError>
+                <DisplayError>{errors.email.message}</DisplayError>
               )}
             </div>
             <div class="form-control">
@@ -101,7 +101,7 @@ const Signin = () => {
                 })}
               />
               {errors.password?.type === "required" && (
-                <AuthError>{errors.password.message}</AuthError>
+                <DisplayError>{errors.password.message}</DisplayError>
               )}
               <label class="label mt-1 ">
                 <Link
@@ -118,7 +118,7 @@ const Signin = () => {
                 </Link>
               </label>
             </div>
-            {error && <AuthError>{error.message}</AuthError>}
+            {error && <DisplayError>{error.message}</DisplayError>}
             <div class="form-control mt-6">
               <button type="submit" class="btn btn-primary">
                 Sign in
