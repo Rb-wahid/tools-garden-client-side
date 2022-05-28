@@ -20,7 +20,7 @@ const MakeAdmin = () => {
 
   const handleRemoveAdmin = async ({ email }) => {
     const { data } = await axiosPrivate.put(
-      "https://infinite-escarpment-69850.herokuapp.com/remove-admin",
+      `https://infinite-escarpment-69850.herokuapp.com/remove-admin/${me?.email}`,
       {
         email,
       }
@@ -42,7 +42,7 @@ const MakeAdmin = () => {
 
   const handleMakeAdmin = async ({ email }) => {
     const { data } = await axiosPrivate.put(
-      "https://infinite-escarpment-69850.herokuapp.com/make-admin",
+      `https://infinite-escarpment-69850.herokuapp.com/make-admin/${me?.email}`,
       { email }
     );
 

@@ -4,10 +4,12 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import axiosPrivate from "../../../auth/axiosPrivate";
 import DisplayError from "../../../components/DisplayError";
+import useUser from "../../../hooks/useUser";
 const imgdb_Key = "efd2e1df15b52bbe78354e035921cf12";
 const imgDBUrl = `https://api.imgbb.com/1/upload?key=${imgdb_Key}`;
 
 const AddAProduct = () => {
+  const [user] = useUser();
   const {
     register,
     handleSubmit,
@@ -51,7 +53,7 @@ const AddAProduct = () => {
         };
 
         const { data: res } = await axiosPrivate.post(
-          "https://infinite-escarpment-69850.herokuapp.com/add-product",
+          `https://infinite-escarpment-69850.herokuapp.com/add-product/${user?.email}`,
           {
             productInformation,
           }
