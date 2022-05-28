@@ -7,7 +7,7 @@ const OrderCancelModal = ({ deleteModal, refetch, setDeleteModal }) => {
     const {
       data: { deletedCount },
     } = await axiosPrivate.delete(
-      `http://localhost:5000/cancel-order/${deleteModal._id}`
+      `https://infinite-escarpment-69850.herokuapp.com/cancel-order/${deleteModal._id}`
     );
     if (deletedCount) {
       toast.success("Cancelled the Product Successfully", {

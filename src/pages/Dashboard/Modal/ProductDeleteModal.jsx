@@ -7,7 +7,7 @@ const ProductDeleteModal = ({ manageDltModal, setManageDltModal, refetch }) => {
     const {
       data: { deletedCount },
     } = await axiosPrivate.delete(
-      `http://localhost:5000/delete-product/${manageDltModal._id}`
+      `https://infinite-escarpment-69850.herokuapp.com/delete-product/${manageDltModal._id}`
     );
     if (deletedCount) {
       toast.success("Deleted the Product Successfully", {

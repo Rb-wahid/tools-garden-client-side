@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import axiosPrivate from "../../../auth/axiosPrivate";
-import AuthError from "../../../components/AuthError";
+import DisplayError from "../../../components/DisplayError";
 
 const ProductUpdateModal = ({
   refetch,
@@ -31,10 +31,9 @@ const ProductUpdateModal = ({
       date: new Date().toLocaleString(),
     };
 
-    console.log(productInformation);
     const {
       data: { matchedCount },
-    } = await axiosPrivate.put(`http://localhost:5000/update-product/${_id}`, {
+    } = await axiosPrivate.put(`https://infinite-escarpment-69850.herokuapp.com/update-product/${_id}`, {
       productInformation,
     });
     if (matchedCount) {
@@ -78,7 +77,7 @@ const ProductUpdateModal = ({
                     })}
                   />
                   {errors.name?.type === "required" && (
-                    <AuthError>{errors.name.message}</AuthError>
+                    <DisplayError>{errors.name.message}</DisplayError>
                   )}
                 </div>
                 <div class="form-control my-3 lg:w-96">
@@ -95,7 +94,7 @@ const ProductUpdateModal = ({
                     })}
                   />
                   {errors.price?.type === "required" && (
-                    <AuthError>{errors.price.message}</AuthError>
+                    <DisplayError>{errors.price.message}</DisplayError>
                   )}
                 </div>
                 <div class="form-control my-3">
@@ -112,7 +111,7 @@ const ProductUpdateModal = ({
                     })}
                   />
                   {errors.quantity?.type === "required" && (
-                    <AuthError>{errors.quantity.message}</AuthError>
+                    <DisplayError>{errors.quantity.message}</DisplayError>
                   )}
                 </div>
                 <div class="form-control my-3">
@@ -129,7 +128,7 @@ const ProductUpdateModal = ({
                     })}
                   />
                   {errors.minimumOrder?.type === "required" && (
-                    <AuthError>{errors.minimumOrder.message}</AuthError>
+                    <DisplayError>{errors.minimumOrder.message}</DisplayError>
                   )}
                 </div>
                 <div class="form-control">
@@ -145,7 +144,7 @@ const ProductUpdateModal = ({
                     })}
                   ></textarea>
                   {errors.description?.type === "required" && (
-                    <AuthError>{errors.description.message}</AuthError>
+                    <DisplayError>{errors.description.message}</DisplayError>
                   )}
                 </div>
 
