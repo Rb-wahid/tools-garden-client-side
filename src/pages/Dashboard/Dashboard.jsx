@@ -1,7 +1,9 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
+import useAdmin from "../../hooks/useAdmin";
 
 const Dashboard = () => {
+  const isAdmin = useAdmin();
   return (
     <section className="">
       <div class="drawer drawer-mobile">
@@ -24,24 +26,33 @@ const Dashboard = () => {
             <li>
               <NavLink to="/dashboard">My Profile</NavLink>
             </li>
-            <li>
-              <NavLink to="my-orders">My Orders</NavLink>
-            </li>
-            <li>
-              <NavLink to="add-review">Add Review</NavLink>
-            </li>
-            <li>
-              <NavLink to="manage-all-orders">Manage All Orders</NavLink>
-            </li>
-            <li>
-              <NavLink to="add-product">Add Product</NavLink>
-            </li>
-            <li>
-              <NavLink to="make-admin">Make Admin</NavLink>
-            </li>
-            <li>
-              <NavLink to="manage-products">Manage Products</NavLink>
-            </li>
+
+            {!isAdmin ? (
+              <>
+                {" "}
+                <li>
+                  <NavLink to="my-orders">My Orders</NavLink>
+                </li>
+                <li>
+                  <NavLink to="add-review">Add Review</NavLink>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <NavLink to="add-product">Add Product</NavLink>
+                </li>
+                <li>
+                  <NavLink to="make-admin">Make Admin</NavLink>
+                </li>
+                <li>
+                  <NavLink to="manage-products">Manage Products</NavLink>
+                </li>
+                <li>
+                  <NavLink to="manage-all-orders">Manage All Orders</NavLink>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </div>
