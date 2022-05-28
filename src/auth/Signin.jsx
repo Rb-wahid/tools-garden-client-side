@@ -52,7 +52,7 @@ const Signin = () => {
   if (loading) return <Spinner />;
 
   return (
-    <section className="hero h-screen">
+    <section className="hero h-screen px-3">
       <div class=" card flex-shrink-0 w-full max-w-sm  shadow-2xl bg-base-100">
         <div class="card-body">
           <h2 class="card-title uppercase justify-center text-secondary ">

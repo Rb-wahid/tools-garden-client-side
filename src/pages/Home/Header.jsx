@@ -11,7 +11,7 @@ const Header = () => {
         loop
         muted
       />
-      <div class="card w-96 shadow-xl top-96 left-72 absolute bg-transparent bg-base-100">
+      <div class="hidden lg:block card w-96 shadow-xl top-96 left-72 absolute bg-transparent bg-base-100">
         <div class="card-body">
           <h2 class="text-5xl uppercase font-bold text-warning">
             Rule the outdoors
