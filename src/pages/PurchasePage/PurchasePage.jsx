@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import AuthError from "../../components/AuthError";
+import DisplayError from "../../components/DisplayError";
 import Spinner from "../../components/Spinner";
 import useFetch from "../../hooks/useFetch";
 import Product from "../Home/Product";
@@ -13,12 +13,12 @@ const PurchasePage = () => {
     data: product,
     error,
     refetch,
-  } = useFetch(["productId", id], `http://localhost:5000/product/${id}`);
+  } = useFetch(["productId", id], `https://infinite-escarpment-69850.herokuapp.com/product/${id}`);
   if (isLoading) {
     return <Spinner />;
   }
   if (error) {
-    return <AuthError>{error.message}</AuthError>;
+    return <DisplayError>{error.message}</DisplayError>;
   }
   return (
     <section className=" max-w-7xl mx-auto mt-16 lg:h-[calc(100vh_-_10rem)] lg:pb-28 flex justify-center items-center">

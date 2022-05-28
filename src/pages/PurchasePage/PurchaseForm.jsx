@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import axiosPrivate from "../../auth/axiosPrivate";
-import AuthError from "../../components/AuthError";
+import DisplayError from "../../components/DisplayError";
 import useUser from "../../hooks/useUser";
 
 const PurchaseForm = ({
@@ -39,7 +39,7 @@ const PurchaseForm = ({
       status: "pending",
       date: new Date().toLocaleString(),
     };
-    const { data } = await axiosPrivate.post("http://localhost:5000/order", {
+    const { data } = await axiosPrivate.post("https://infinite-escarpment-69850.herokuapp.com/order", {
       OrderInformation,
     });
     if (data.insertedId) {
@@ -100,10 +100,10 @@ const PurchaseForm = ({
               })}
             />
             {errors.order?.type === "max" && (
-              <AuthError>{errors.order.message}</AuthError>
+              <DisplayError>{errors.order.message}</DisplayError>
             )}
             {errors.order?.type === "min" && (
-              <AuthError>{errors.order.message}</AuthError>
+              <DisplayError>{errors.order.message}</DisplayError>
             )}
           </div>
           <div class="form-control my-3">
@@ -116,7 +116,7 @@ const PurchaseForm = ({
               })}
             />
             {errors.phone?.type === "required" && (
-              <AuthError>{errors.phone.message}</AuthError>
+              <DisplayError>{errors.phone.message}</DisplayError>
             )}
           </div>
           <div class="form-control">
@@ -128,7 +128,7 @@ const PurchaseForm = ({
               })}
             ></textarea>
             {errors.address?.type === "required" && (
-              <AuthError>{errors.address.message}</AuthError>
+              <DisplayError>{errors.address.message}</DisplayError>
             )}
           </div>
           <div className=" font-extrabold text-xl flex-col text-left text-warning mt-3">
