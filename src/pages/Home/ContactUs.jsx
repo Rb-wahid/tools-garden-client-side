@@ -2,9 +2,11 @@ import React from "react";
 const ContactUs = () => {
   return (
     <section className="">
-      <div className="my-12 md:mb-20 md:mt-12 grid grid-cols-1 lg:grid-cols-2 max-w-7xl mx-auto">
-        <section className=" w-[500px] text-center ">
-          <h2 className="text-4xl font-bold mb-12 text-warning">Contact us</h2>
+      <div className="my-12 md:mt-12 grid grid-cols-1 lg:grid-cols-2 max-w-7xl mx-3 lg:mx-auto">
+        <section className=" lg:w-[500px] text-center mb-12">
+          <h2 className="text-3xl lg:text-4xl font-bold mb-12 text-warning">
+            Contact Us
+          </h2>
           <div className=" card card-body bg-base-300 ">
             <div className="form-group mb-6">
               <input
@@ -97,7 +99,7 @@ const ContactUs = () => {
                 </svg>
               </div>
 
-              <h2 className="text-4xl font-bold mb-6 text-warning">
+              <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-warning">
                 Subscribe to our newsletter
               </h2>
 

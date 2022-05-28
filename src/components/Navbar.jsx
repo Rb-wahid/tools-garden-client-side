@@ -3,6 +3,8 @@ import { signOut } from "firebase/auth";
 import { NavLink } from "react-router-dom";
 import useUser from "../hooks/useUser";
 import auth from "../Firebase.init";
+import { FiLogOut } from "react-icons/fi";
+import { VscSignIn } from "react-icons/vsc";
 
 const Navbar = () => {
   const [user] = useUser();
@@ -91,13 +93,15 @@ const Navbar = () => {
               await signOut(auth);
             }}
             to="/"
-            className="btn"
+            className="lg:btn"
           >
-            Sign Out
+            <FiLogOut className=" h-6 w-6 lg:hidden" />
+            <span className="hidden lg:block">Sign Out</span>
           </NavLink>
         ) : (
-          <NavLink to="/signin" className="btn">
-            Sign In
+          <NavLink to="/signin" className="lg:btn">
+            <VscSignIn className=" h-6 w-6 lg:hidden" />
+            <span className="hidden lg:block">Sign In</span>
           </NavLink>
         )}
       </div>

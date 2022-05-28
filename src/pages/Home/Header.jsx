@@ -3,14 +3,7 @@ import video from "../../assets/video//rto-hero-v1 .mp4";
 const Header = () => {
   return (
     <header>
-      <video
-        src={video}
-        className="w-screen"
-        controls="controls"
-        autoPlay
-        loop
-        muted
-      />
+      <video src={video} className="w-screen" autoPlay loop muted />
       <div class="hidden lg:block card w-96 shadow-xl top-96 left-72 absolute bg-transparent bg-base-100">
         <div class="card-body">
           <h2 class="text-5xl uppercase font-bold text-warning">

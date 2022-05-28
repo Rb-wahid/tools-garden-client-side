@@ -12,15 +12,15 @@ const Review = () => {
 
   if (isLoading) return <Spinner />;
   return (
-    <section className="mt-24 mb-12 max-w-7xl mx-auto ">
-      <h2 className="mb-12 text-center text-4xl my-8 font-bold text-warning uppercase">
+    <section className="mt-24 mb-12 max-w-7xl mx-5  lg:mx-auto ">
+      <h2 className="mb-12 text-center text-3xl lg:text-4xl my-8 font-bold text-warning uppercase">
         Our Customer's Review
       </h2>
-      <div className="grid grid-cols-1 lg:grid-cols-3">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 ">
         {reviews.map(({ reviewInformation: { rating, review } }) => (
           <div
             key={review._id}
-            class="card w-96 bg-neutral text-neutral-content"
+            class="card lg:w-96 bg-neutral text-neutral-content"
           >
             <div class="card-body items-center text-center">
               <h2 class="card-title">
@@ -32,11 +32,7 @@ const Review = () => {
                   }
                 />
               </h2>
-              <p>{review}</p>
-              {/* <div class="card-actions justify-end">
-                <button class="btn btn-primary">Accept</button>
-                <button class="btn btn-ghost">Deny</button>
-              </div> */}
+              <p className="text-justify">{review}</p>
             </div>
           </div>
         ))}

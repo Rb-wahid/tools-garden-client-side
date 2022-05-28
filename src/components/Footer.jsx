@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className=" text-center bg-gray-900 text-white">
-      <div className="flex flex-col md:flex-row justify-evenly px-6 pt-6">
-        <div>
+      <div className="flex flex-col md:flex-row justify-evenly px-6 pt-6 lg:h-48 items-center">
+        <div className="flex flex-col items-center">
           <h2>DOWNLOAD OUR APPS</h2>
           <img
             className="w-[150px]"
@@ -148,7 +148,7 @@ const Footer = () => {
         </div>
         <div>
           <img
-            className="w-[300px]"
+            className="lg:w-[300px]"
             src="https://boibichitra.com/public/img/payments.png"
             alt=""
           />
@@ -156,7 +156,7 @@ const Footer = () => {
       </div>
 
       <div
-        className="text-center p-4"
+        className="p-4 h-20 flex justify-center items-center"
         style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
       >
         © {new Date().getFullYear()} Copyright:

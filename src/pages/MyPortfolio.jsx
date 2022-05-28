@@ -1,9 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 const MyPortfolio = () => {
   return (
-    <section className="h-screen flex items-center">
+    <section className="h-screen flex items-center mt-80 lg:mt-0">
       <div className="card card-body bg-base-100 max-w-4xl mx-auto">
         <h2 className=" text-2xl">
           Name : <span className="text-3xl">Raihan Bin Wahid</span>
@@ -19,8 +18,8 @@ const MyPortfolio = () => {
         </h2>
         <p className=" text-right mr-12 font-bold">Session - 2015-2016</p>
         <h2 className="text-2xl">Skills:</h2>
-        <div className="grid  grid-cols-3 ">
-          <ul className=" ml-16 list-disc">
+        <div className="ml-20 lg:ml-0 flex flex-col lg:grid lg:grid-cols-3 ">
+          <ul className=" lg:ml-16 list-disc">
             <li>JavaScript</li>
             <li>React</li>
             <li>Node.js</li>
@@ -40,8 +39,8 @@ const MyPortfolio = () => {
           </ul>
         </div>
         <h2 className="text-2xl">Projects:</h2>
-        <div className="ml-12 w-[700px]">
-          <div className="flex justify-evenly items-center">
+        <div className="lg:ml-12 lg:w-[700px]">
+          <div className="flex flex-col lg:flex-row justify-evenly items-center">
             <h3 className="text-xl font-semibold">
               The Treasure Chest (Book warehouse){" "}
             </h3>
@@ -59,14 +58,14 @@ const MyPortfolio = () => {
               May 1 2022 - May 7 2022
             </small>
           </div>
-          <ul className="ml-16 list-disc">
+          <ul className="mx-5 lg:ml-16 list-disc">
             <li>Implemented authentication using Firebase</li>
             <li>Verified authorization and APIs secured using JWT</li>
             <li>Handled CRUD operation with Node.js & MongoDB</li>
           </ul>
         </div>
-        <div className="ml-6 w-[700px]">
-          <div className="flex justify-evenly items-center">
+        <div className="mt-3 lg:ml-6 lg:w-[700px]">
+          <div className="flex flex-col lg:flex-row justify-evenly items-center">
             <h3 className="text-xl font-semibold">Crypto Portfolio Tracker</h3>
 
             <a
@@ -77,11 +76,11 @@ const MyPortfolio = () => {
             >
               LIVE
             </a>
-            <small className="mr-12 font-semibold">
+            <small className="lg:mr-12 font-semibold">
               February 6 2022 - May 15 2022
             </small>
           </div>
-          <ul className="ml-20 pl-2 list-disc">
+          <ul className="mx-5 lg:ml-20 lg:pl-2 list-disc">
             <li>User can add Crypto Coin in their profile</li>
             <li>
               Tracking latest crypto coin market price using CoinGecko API
@@ -89,8 +88,8 @@ const MyPortfolio = () => {
             <li>Asset information stored in DynamoDB</li>
           </ul>
         </div>
-        <div className="w-[700px]">
-          <div className="flex justify-evenly items-center">
+        <div className=" mt-3 lg:w-[700px]">
+          <div className="flex flex-col lg:flex-row justify-evenly items-center">
             <h3 className="text-xl font-semibold">ToDo List</h3>
             <a
               className=" text-blue-500 font-bold"
@@ -100,11 +99,11 @@ const MyPortfolio = () => {
             >
               LIVE
             </a>
-            <small className="mr-12 font-semibold">
+            <small className="lg:mr-12 font-semibold">
               May 18 2022 - May 18 2022
             </small>
           </div>
-          <ul className="ml-24 pl-4 list-disc">
+          <ul className="mx-5 lg:ml-24 lg:pl-4 list-disc">
             <li>User can add ToDo</li>
             <li>User can update ToDo</li>
             <li>Asset information stored in DynamoDB</li>

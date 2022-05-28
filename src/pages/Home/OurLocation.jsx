@@ -8,7 +8,7 @@ const OurLocation = () => {
     <div id="map">
       <div class="divider"></div>
 
-      <h2 className="mb-12 text-center text-4xl my-8 font-bold text-warning uppercase">
+      <h2 className="mb-12 text-center text-3xl lg:text-4xl my-8 font-bold text-warning uppercase">
         our location
       </h2>
       <MapContainer

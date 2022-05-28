@@ -15,7 +15,7 @@ const Home = () => {
       <Review />
       <Stat />
       <ContactUs />
-      <OurLocation/>
+      <OurLocation />
       <Footer />
     </section>
   );
