@@ -13,7 +13,7 @@ const Review = () => {
   if (isLoading) return <Spinner />;
   return (
     <section className="mt-24 mb-12 max-w-7xl mx-auto ">
-      <h2 className="mb-12 text-center text-4xl my-8 font-bold text-warning">
+      <h2 className="mb-12 text-center text-4xl my-8 font-bold text-warning uppercase">
         Our Customer's Review
       </h2>
       <div className="grid grid-cols-1 lg:grid-cols-3">

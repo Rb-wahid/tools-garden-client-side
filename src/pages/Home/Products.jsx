@@ -19,7 +19,7 @@ const Products = () => {
   if (error) return <DisplayError />;
   return (
     <section className=" max-w-7xl mx-auto my-12">
-      <h2 className="text-center text-4xl text-warning font-bold my-12">
+      <h2 className="text-center text-4xl text-warning font-bold my-12 uppercase">
         Our Products
       </h2>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">

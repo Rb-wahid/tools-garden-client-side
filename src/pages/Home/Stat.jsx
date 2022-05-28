@@ -12,7 +12,7 @@ const Stat = () => {
     <>
       <div class="divider"></div>
       <section className="flex flex-col max-w-5xl mx-auto justify-center my-12">
-        <h2 className="text-4xl font-bold text-center mb-12 text-warning">
+        <h2 className="text-4xl font-bold text-center mb-12 text-warning uppercase">
           business summary
         </h2>
         <div class="stats stats-vertical text-center lg:stats-horizontal shadow">
