@@ -5,6 +5,7 @@ import Products from "./Products";
 import Review from "./Review";
 import Stat from "./Stat";
 import Header from "./Header";
+import OurLocation from "./OurLocation";
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
       <Review />
       <Stat />
       <ContactUs />
+      <OurLocation/>
       <Footer />
     </section>
   );
