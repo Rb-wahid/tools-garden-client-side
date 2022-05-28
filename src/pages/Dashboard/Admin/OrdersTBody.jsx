@@ -50,7 +50,7 @@ const OrdersTBody = ({ index, order, setDeleteModal, refetch }) => {
             {status}
           </button>
         ) : status === "processing" ? (
-          <button class="rounded btn-info btn-sm font-semibold  w-24 uppercase">
+          <button class="rounded btn-info btn-sm font-semibold  w-28 uppercase">
             {status}
           </button>
         ) : (

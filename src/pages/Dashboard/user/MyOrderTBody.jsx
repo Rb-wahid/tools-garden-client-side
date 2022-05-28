@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import axiosPrivate from "../../../auth/axiosPrivate";
 const MyOrderTBody = ({ index, order, setDeleteModal }) => {
   const navigate = useNavigate();
   const {
@@ -53,7 +52,7 @@ const MyOrderTBody = ({ index, order, setDeleteModal }) => {
             {status}
           </button>
         ) : status === "processing" ? (
-          <button class="rounded btn-info btn-sm w-24  font-semibold uppercase">
+          <button class="rounded btn-info btn-sm w-28  font-semibold uppercase">
             {status}
           </button>
         ) : (
