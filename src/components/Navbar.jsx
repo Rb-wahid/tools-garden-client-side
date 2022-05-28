@@ -23,6 +23,11 @@ const Navbar = () => {
           Blogs
         </NavLink>
       </li>
+      <li>
+        <NavLink to="/portfolio" className="rounded-lg">
+          Portfolio
+        </NavLink>
+      </li>
     </>
   );
 

@@ -1,20 +1,21 @@
-import axios from "axios";
 import React, { useState } from "react";
 import Rating from "react-rating";
 import { toast } from "react-toastify";
 import gray from "../../../assets/images/star-grey.png";
 import yellow from "../../../assets/images/star-yellow.png";
+import axiosPrivate from "../../../auth/axiosPrivate";
+import useUser from "../../../hooks/useUser";
 
 const AddAReview = () => {
+  const [user] = useUser()
   const [rating, setRating] = useState(0);
-
   const [review, setReview] = useState("");
   const handleRation = async () => {
     const reviewInformation = { rating, review };
     const {
       data: { insertedId },
-    } = await axios.post(
-      "https://infinite-escarpment-69850.herokuapp.com/add-review",
+    } = await axiosPrivate.post(
+      `https://infinite-escarpment-69850.herokuapp.com/add-review/${user?.email}`,
       {
         reviewInformation,
       }
